@@ -13,28 +13,28 @@ import lombok.*;
 @Table(name = "users")
 public class UserInfo {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Id
     @JsonProperty("user_id")
-    @NonNull
+    @Column(name = "user_id", unique = true, nullable = false)
     private String userId;
 
     @JsonProperty("first_name")
-    @NonNull
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @JsonProperty("last_name")
-    @NonNull
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @JsonProperty("phone_number")
-    @NonNull
+    @Column(name = "phone_number", nullable = false)
     private Long phoneNumber;
 
     @JsonProperty("email")
-    @NonNull
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @JsonProperty("profile_pic")
